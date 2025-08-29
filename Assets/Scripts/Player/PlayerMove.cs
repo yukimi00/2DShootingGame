@@ -21,8 +21,8 @@ public class PlayerMove : MonoBehaviour {
         transform.position += movement * moveSpeed * Time.deltaTime;
 
         // 画面範囲の取得
-        Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+        Vector3 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        Vector3 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, min.x + halfWidth, max.x - halfWidth);
