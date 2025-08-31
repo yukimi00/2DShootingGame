@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
 
     private int Score;
+    public bool IsGameOver { get; private set; }
 
     void Awake() {
         if (Instance != null && Instance != this) {
@@ -30,10 +31,16 @@ public class GameManager : MonoBehaviour {
     private void ResetGame() {
         Score = 0;
         GameEvents.ScoreChanged(Score);
+        IsGameOver = false;
     }
 
     public void AddScore(int amount) {
         Score += amount;
         GameEvents.ScoreChanged(Score);
+    }
+
+    public void GameOver() {
+        GameEvents.GameOver();
+        IsGameOver = true;
     }
 }

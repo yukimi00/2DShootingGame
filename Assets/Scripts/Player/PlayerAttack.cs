@@ -7,6 +7,8 @@ public class PlayerAttack : MonoBehaviour {
     private float nextFireTime = 0f;
 
     void Update() {
+        if (GameManager.Instance.IsGameOver) return;
+
         if (Input.GetMouseButtonDown(0) && Time.time > nextFireTime) {
             Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
             nextFireTime = Time.time + fireRate;

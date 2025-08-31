@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void SpawnEnemy() {
+        if (GameManager.Instance.IsGameOver) return;
+
         float randomX = Random.Range(-spawnRangeX, spawnRangeX);
         Vector3 spawnPos = new Vector3(randomX, transform.position.y, 0);
 

@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour {
     }
 
     void Update() {
+        if (GameManager.Instance.IsGameOver) return;
+
         // 入力受付
         float inputMoveX = Input.GetAxis("Horizontal");
         float inputMoveY = Input.GetAxis("Vertical");
