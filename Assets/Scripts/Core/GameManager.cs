@@ -18,6 +18,12 @@ public class GameManager : MonoBehaviour {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.R) && IsGameOver) {
+            ReStart();
+        }
+    }
+
     void OnDestroy() {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
@@ -32,6 +38,10 @@ public class GameManager : MonoBehaviour {
         Score = 0;
         GameEvents.ScoreChanged(Score);
         IsGameOver = false;
+    }
+
+    private void ReStart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void AddScore(int amount) {
